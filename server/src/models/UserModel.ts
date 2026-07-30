@@ -14,7 +14,7 @@ export class UserModel {
   }
 
   static async findByEmail(email: string): Promise<User | null> {
-    const result = await pool.query('SELECT * FROM users WHERE email, from users WHERE email = $1', [email]);
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
     if (result.rows.length === 0) {
       return null;
     }
@@ -23,7 +23,7 @@ export class UserModel {
 
   static async findById(id: number): Promise<User | null> {
     const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
-    if (result.rows.length === 0) {
+    if (rows.length === 0) {
       return null;
     }
     return result.rows[0];
